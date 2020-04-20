@@ -1,15 +1,20 @@
 package com.tasks.thoughtworks;
 
 public class Plateau {
-    public Plateau(String s) {
 
+    private final int length;
+    private final int width;
+
+    public Plateau(String dimensions) {
+        this.length = Integer.parseInt(dimensions.substring(0,1));
+        this.width = Integer.parseInt(dimensions.substring(2,3));
     }
 
-    public Object getLength() {
-        return 5;
+    public int getLength() {
+        return length;
     }
 
-    public Object getWidth() {
-        return 5;
+    public int getWidth() {
+        return width;
     }
 }
