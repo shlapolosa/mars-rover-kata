@@ -9,12 +9,13 @@ import java.util.stream.Stream;
 public class MarsRoverApplication {
 
     public static void main(String[] args) {
-        String content = "";
+
+        Exploration exploration = null;
         try (Stream<String> lines = Files.lines(Paths.get(args[0]))) {
-            content = lines.collect(Collectors.joining(System.lineSeparator()));
+            exploration = new Exploration(lines);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(content);
+        System.out.println(exploration.start());
     }
 }
