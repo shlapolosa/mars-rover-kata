@@ -9,3 +9,5 @@
 *.orig
 classes/
 out/
+java/.idea
+java/target
