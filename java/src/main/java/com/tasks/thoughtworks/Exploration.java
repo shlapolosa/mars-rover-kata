@@ -14,4 +14,8 @@ public class Exploration {
     public String start() {
         return inputCommands.collect(Collectors.joining(System.lineSeparator()));
     }
+
+    public Object getPlateau() {
+        return "null";
+    }
 }
