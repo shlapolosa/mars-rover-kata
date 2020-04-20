@@ -1,13 +1,17 @@
 package com.tasks.thoughtworks;
 
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Exploration {
 
-    public Exploration(Stream<String> stream) {
+    private Stream<String> inputCommands;
+
+    public Exploration(Stream<String> inputCommands) {
+        this.inputCommands = inputCommands;
     }
 
     public String start() {
-        return null;
+        return inputCommands.collect(Collectors.joining(System.lineSeparator()));
     }
 }

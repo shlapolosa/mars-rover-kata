@@ -12,6 +12,13 @@ public class ExplorationTest {
     public void should_return_no_updated_positions_if_an_empty_input_is_given() {
         Stream<String> stream = Stream.of("");
         Exploration exploration = new Exploration(stream);
-        Assert.assertNull("",exploration.start());
+        Assert.assertEquals("",exploration.start());
+    }
+
+    @Test
+    public void should_read_and_return_the_dimensions_of_the_plateu_if_thats_all_thats_supplied() {
+        Stream<String> stream = Stream.of("5 5");
+        Exploration exploration = new Exploration(stream);
+        Assert.assertEquals("5 5",exploration.start());
     }
 }
