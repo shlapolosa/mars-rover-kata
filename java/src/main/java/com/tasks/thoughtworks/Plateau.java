@@ -17,4 +17,9 @@ public class Plateau {
     public int getWidth() {
         return width;
     }
+
+    @Override
+    public String toString() {
+        return length + " "+ width;
+    }
 }

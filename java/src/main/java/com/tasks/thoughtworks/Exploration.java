@@ -7,7 +7,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.*;
 
 public class Exploration {
 
@@ -19,13 +19,14 @@ public class Exploration {
     }
 
     public String start() {
-        Map<Integer, List<String>> result = inputCommands.collect(groupingBy(String::length));
-        if(result.containsKey(0)){
+        List<String> commandsStrings = inputCommands.collect(toList());
+        if(commandsStrings.get(0).isEmpty()){
             return "";
         }
-        String plateauString = result.get(3).toString().replace("[", "").replace("]", "");
-        this.plateau = new Plateau(plateauString);
-        return plateauString;
+        List<Plateau> plateauList = Stream.of(commandsStrings.get(0)).map(plateau -> new Plateau(plateau)).collect(toList());
+        List<String> StringList = commandsStrings.subList(1, commandsStrings.size());
+        this.plateau = plateauList.get(0);
+        return this.plateau.toString();
     }
 
     public Plateau getPlateau() {
