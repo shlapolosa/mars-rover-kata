@@ -15,4 +15,22 @@ public class RoverPosition {
     public String toString() {
         return x +" " + y +" " + orientation;
     }
+
+    public void update(String command) {
+        if ("M".equalsIgnoreCase(command) && this.orientation.equalsIgnoreCase("N")) {
+            this.y++;
+        } else if ("M".equalsIgnoreCase(command) && this.orientation.equalsIgnoreCase("E")) {
+            this.x++;
+        } else if ("M".equalsIgnoreCase(command) && this.orientation.equalsIgnoreCase("W")) {
+            this.x--;
+        } else if ("M".equalsIgnoreCase(command) && this.orientation.equalsIgnoreCase("S")) {
+            this.y--;
+        }
+
+        if ("R".equalsIgnoreCase(command)) {
+            this.orientation = Compass.swingClockWise(this.orientation);
+        } else if ("L".equalsIgnoreCase(command)) {
+            this.orientation = Compass.swingAntiClockWise(this.orientation);
+        }
+    }
 }
