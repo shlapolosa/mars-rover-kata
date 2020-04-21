@@ -18,7 +18,7 @@ public class MarsRoverApplication {
             String output = ((List<Rover>)explorationElements.get(1)).stream().map(o -> ((Rover)o).getFinalPosition()).collect(Collectors.joining(System.lineSeparator()));
             System.out.println(output);
         } catch (IOException e) {
-            e.printStackTrace();
+            String handleError = e.getLocalizedMessage();
         }
     }
 }
