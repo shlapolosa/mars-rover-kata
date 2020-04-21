@@ -40,4 +40,14 @@ public class ExplorationTest {
         Assert.assertThat(objectList.get(0), instanceOf(Plateau.class));
     }
 
+    @Test
+    public void should_create_a_list_of_rovers() {
+        Stream<String> stream = Stream.of("5 5","1 2 N", "LML");
+        Exploration exploration = new Exploration(stream);
+        List<Object> objectList = exploration.start();
+        Assert.assertThat(objectList.get(1),instanceOf(List.class));
+        Assert.assertThat(((List<Rover>)objectList.get(1)).get(0),instanceOf(Rover.class));
+    }
+
+    
 }

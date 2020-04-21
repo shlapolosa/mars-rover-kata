@@ -22,6 +22,8 @@ public class Exploration {
         }
         this.plateau = Stream.of(commandsStrings.get(0)).map(plateau -> new Plateau(plateau)).collect(toList()).get(0);
         explorationElements.add(plateau);
+        List<Rover> rovers = commandsStrings.subList(1, commandsStrings.size()).stream().filter(i -> commandsStrings.indexOf(i) % 2 != 0).map(initialPostion -> new Rover(initialPostion)).collect(toList());
+        explorationElements.add(rovers);
         return this.explorationElements;
     }
 }
