@@ -10,4 +10,9 @@ public class RoverPosition {
         this.y = Integer.parseInt(initialPosition.substring(2, 3));
         this.orientation = initialPosition.substring(4, 5);
     }
+
+    @Override
+    public String toString() {
+        return x +" " + y +" " + orientation;
+    }
 }

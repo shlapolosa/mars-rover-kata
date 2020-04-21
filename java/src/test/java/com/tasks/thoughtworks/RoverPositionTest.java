@@ -13,4 +13,10 @@ public class RoverPositionTest {
         Assert.assertEquals(0, position.y);
         Assert.assertEquals("N", position.orientation);
     }
+
+    @Test
+    public void should_print_the_rovers_final_position_as_a_string() {
+        RoverPosition position = new RoverPosition("0 0 N");
+        Assert.assertEquals("0 0 N", position.toString());
+    }
 }
