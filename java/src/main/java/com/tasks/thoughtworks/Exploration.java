@@ -22,7 +22,14 @@ public class Exploration {
         }
         this.plateau = Stream.of(commandsStrings.get(0)).map(plateau -> new Plateau(plateau)).collect(toList()).get(0);
         explorationElements.add(plateau);
+        List<String> movement = commandsStrings.subList(1, commandsStrings.size()).stream().filter(i -> commandsStrings.indexOf(i) % 2 == 0).collect(toList());
         List<Rover> rovers = commandsStrings.subList(1, commandsStrings.size()).stream().filter(i -> commandsStrings.indexOf(i) % 2 != 0).map(initialPostion -> new Rover(initialPostion)).collect(toList());
+
+        if (movement.size() == rovers.size()) {
+            for (Rover rover : rovers) {
+                rover.move(movement.get(rovers.indexOf(rover)));
+            }
+        }
         explorationElements.add(rovers);
         return this.explorationElements;
     }
