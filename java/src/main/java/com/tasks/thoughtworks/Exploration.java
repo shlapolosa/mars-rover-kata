@@ -16,6 +16,7 @@ public class Exploration {
     }
 
     public List<Object> start() {
+
         List<String> commandsStrings = inputCommands.collect(toList());
         if (commandsStrings.get(0).isEmpty()) {
             return this.explorationElements;
