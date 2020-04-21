@@ -42,12 +42,20 @@ public class ExplorationTest {
 
     @Test
     public void should_create_a_list_of_rovers() {
-        Stream<String> stream = Stream.of("5 5","1 2 N", "LML");
+        Stream<String> stream = Stream.of("5 5","1 2 N");
         Exploration exploration = new Exploration(stream);
         List<Object> objectList = exploration.start();
         Assert.assertThat(objectList.get(1),instanceOf(List.class));
         Assert.assertThat(((List<Rover>)objectList.get(1)).get(0),instanceOf(Rover.class));
     }
 
-    
+//    @Test
+//    public void should_check_that_a_rover_is_in_its_final_position_after_it_moves() {
+//        Stream<String> stream = Stream.of("5 5","0 0 N", "M");
+//        Exploration exploration = new Exploration(stream);
+//        List<Object> objectList = exploration.start();
+//        Rover rover = ((List<Rover>) objectList.get(1)).get(0);
+//        Assert.assertEquals("0 1 N", rover.getFinalPosition());
+//
+//    }
 }
