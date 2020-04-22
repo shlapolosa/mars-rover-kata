@@ -1,6 +1,5 @@
 package com.tasks.thoughtworks;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -43,7 +42,7 @@ public class Expedition {
             List<Rover> rovers = explorationElements.getRovers();
             if (movement.size() == rovers.size()) {
                 for (Rover rover : rovers) {
-                    rover.move(movement.get(rovers.indexOf(rover)));
+                    rover.execute(movement.get(rovers.indexOf(rover)),explorationElements.getPlateau());
                 }
             }
             return this;

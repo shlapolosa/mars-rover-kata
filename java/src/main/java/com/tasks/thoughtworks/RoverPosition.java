@@ -13,23 +13,24 @@ public class RoverPosition {
 
     @Override
     public String toString() {
-        return x +" " + y +" " + orientation;
+        return x + " " + y + " " + orientation;
     }
 
-    public void update(String command) {
-        if ("M".equalsIgnoreCase(command) && this.orientation.equalsIgnoreCase("N")) {
-            this.y++;
-        } else if ("M".equalsIgnoreCase(command) && this.orientation.equalsIgnoreCase("E")) {
-            this.x++;
-        } else if ("M".equalsIgnoreCase(command) && this.orientation.equalsIgnoreCase("W")) {
-            this.x--;
-        } else if ("M".equalsIgnoreCase(command) && this.orientation.equalsIgnoreCase("S")) {
-            this.y--;
+    public void update(String aMovement, Plateau forThisPlateau) {
+
+        if ("M".equalsIgnoreCase(aMovement) && this.orientation.equalsIgnoreCase("N")) {
+            if (this.y + 1 <= forThisPlateau.getLength())this.y = ++this.y;
+        } else if ("M".equalsIgnoreCase(aMovement) && this.orientation.equalsIgnoreCase("E")) {
+            if (this.x + 1 <= forThisPlateau.getWidth())this.x = ++this.x;
+        } else if ("M".equalsIgnoreCase(aMovement) && this.orientation.equalsIgnoreCase("W")) {
+            if (this.x - 1 >= 0)this.x = --this.x;
+        } else if ("M".equalsIgnoreCase(aMovement) && this.orientation.equalsIgnoreCase("S")) {
+            if (this.y - 1 >= 0)this.y = --this.y;
         }
 
-        if ("R".equalsIgnoreCase(command)) {
+        if ("R".equalsIgnoreCase(aMovement)) {
             this.orientation = Compass.swingClockWise(this.orientation);
-        } else if ("L".equalsIgnoreCase(command)) {
+        } else if ("L".equalsIgnoreCase(aMovement)) {
             this.orientation = Compass.swingAntiClockWise(this.orientation);
         }
     }

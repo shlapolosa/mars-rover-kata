@@ -13,11 +13,11 @@ public class Rover {
         return this.position.toString();
     }
 
-    public void move(String movementCommands) {
+    public void execute(String aMovement, Plateau onAPlateau) {
 
-        for (int i = 0; i < movementCommands.length(); i++) {
-            String command = String.valueOf(movementCommands.charAt(i));
-            this.position.update(command);
+        for (int i = 0; i < aMovement.length(); i++) {
+            String command = String.valueOf(aMovement.charAt(i));
+            this.position.update(command, onAPlateau);
         }
     }
 }
