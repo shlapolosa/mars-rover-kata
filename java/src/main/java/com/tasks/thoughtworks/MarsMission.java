@@ -11,9 +11,8 @@ public class MarsMission {
 
     public static void main(String[] args) {
 
-        Expedition expedition = null;
         try (Stream<String> lines = Files.lines(Paths.get(args[0]))) {
-            expedition = new Expedition(lines);
+            Expedition expedition = new Expedition(lines);
             ExplorationElements explorationElements = expedition.start();
             String output = explorationElements.getRovers().stream().map(o -> ((Rover)o).getFinalPosition()).collect(Collectors.joining(System.lineSeparator()));
             System.out.println(output);
