@@ -9,21 +9,19 @@ import static java.util.stream.Collectors.toList;
 public class Expedition {
 
     private List<String> commandsStrings;
-    private List<Object> explorationElements = new ArrayList<Object>();
 
     public Expedition(Stream<String> inputCommands) {
         this.commandsStrings = inputCommands.collect(toList());
     }
 
-    public List<Object> start() {
+    public ExplorationElements start() {
 
         if (commandsStrings.get(0).isEmpty()) {
-            return this.explorationElements;
+            return new ExplorationElements();
         }
 
         return new ExpeditionBuilder(commandsStrings).
                 createPlateau().
-                extractMovementCommands().
                 getRovers().
                 moveRovers().
                 build();
@@ -33,7 +31,7 @@ public class Expedition {
     private class ExpeditionBuilder {
 
         private List<String> commandsStrings;
-        private List<Object> explorationElements = new ArrayList<Object>();
+        private ExplorationElements explorationElements = new ExplorationElements();
 
         public ExpeditionBuilder(List<String> inputCommands) {
             this.commandsStrings = inputCommands;
@@ -41,8 +39,8 @@ public class Expedition {
 
         public ExpeditionBuilder moveRovers() {
 
-            List<String> movement = (List<String>) explorationElements.get(1);
-            List<Rover> rovers = (List<Rover>) explorationElements.get(2);
+            List<String> movement = commandsStrings.subList(1, commandsStrings.size()).stream().filter(i -> commandsStrings.indexOf(i) % 2 == 0).collect(toList());
+            List<Rover> rovers = explorationElements.getRovers();
             if (movement.size() == rovers.size()) {
                 for (Rover rover : rovers) {
                     rover.move(movement.get(rovers.indexOf(rover)));
@@ -53,23 +51,17 @@ public class Expedition {
 
         public ExpeditionBuilder getRovers() {
             List<Rover> rovers = commandsStrings.subList(1, commandsStrings.size()).stream().filter(i -> commandsStrings.indexOf(i) % 2 != 0).map(initialPostion -> new Rover(initialPostion)).collect(toList());
-            explorationElements.add(rovers);
-            return this;
-        }
-
-        public ExpeditionBuilder extractMovementCommands() {
-            List<String> movement = commandsStrings.subList(1, commandsStrings.size()).stream().filter(i -> commandsStrings.indexOf(i) % 2 == 0).collect(toList());
-            explorationElements.add(movement);
+            explorationElements.setRovers(rovers);
             return this;
         }
 
         public ExpeditionBuilder createPlateau() {
             Plateau aplateau = Stream.of(commandsStrings.get(0)).map(plateau -> new Plateau(plateau)).collect(toList()).get(0);
-            explorationElements.add(aplateau);
+            explorationElements.setPlateau(aplateau);
             return this;
         }
 
-        public List<Object> build() {
+        public ExplorationElements build() {
             return explorationElements;
         }
     }

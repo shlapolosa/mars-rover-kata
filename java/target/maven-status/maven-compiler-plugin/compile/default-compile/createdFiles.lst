@@ -5,4 +5,5 @@ com\tasks\thoughtworks\Expedition.class
 com\tasks\thoughtworks\Expedition$ExpeditionBuilder.class
 com\tasks\thoughtworks\RoverPosition.class
 com\tasks\thoughtworks\Compass$1.class
+com\tasks\thoughtworks\ExplorationElements.class
 com\tasks\thoughtworks\MarsMission.class
