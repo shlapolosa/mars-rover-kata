@@ -15,7 +15,7 @@ public class MarsRoverApplication {
         try (Stream<String> lines = Files.lines(Paths.get(args[0]))) {
             exploration = new Exploration(lines);
             List<Object> explorationElements = exploration.start();
-            String output = ((List<Rover>)explorationElements.get(1)).stream().map(o -> ((Rover)o).getFinalPosition()).collect(Collectors.joining(System.lineSeparator()));
+            String output = ((List<Rover>)explorationElements.get(2)).stream().map(o -> ((Rover)o).getFinalPosition()).collect(Collectors.joining(System.lineSeparator()));
             System.out.println(output);
         } catch (IOException e) {
             String handleError = e.getLocalizedMessage();

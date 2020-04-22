@@ -45,8 +45,8 @@ public class ExplorationTest {
         Stream<String> stream = Stream.of("5 5","1 2 N");
         Exploration exploration = new Exploration(stream);
         List<Object> objectList = exploration.start();
-        Assert.assertThat(objectList.get(1),instanceOf(List.class));
-        Assert.assertThat(((List<Rover>)objectList.get(1)).get(0),instanceOf(Rover.class));
+        Assert.assertThat(objectList.get(2),instanceOf(List.class));
+        Assert.assertThat(((List<Rover>)objectList.get(2)).get(0),instanceOf(Rover.class));
     }
 
     @Test
@@ -54,7 +54,7 @@ public class ExplorationTest {
         Stream<String> stream = Stream.of("5 5","0 0 N", "M");
         Exploration exploration = new Exploration(stream);
         List<Object> objectList = exploration.start();
-        Rover rover = ((List<Rover>) objectList.get(1)).get(0);
+        Rover rover = ((List<Rover>) objectList.get(2)).get(0);
         Assert.assertEquals("0 1 N", rover.getFinalPosition());
 
     }
@@ -64,9 +64,9 @@ public class ExplorationTest {
         Stream<String> stream = Stream.of("5 5","0 0 N", "MM","1 1 E", "LM");
         Exploration exploration = new Exploration(stream);
         List<Object> objectList = exploration.start();
-        Rover rover1 = ((List<Rover>) objectList.get(1)).get(0);
+        Rover rover1 = ((List<Rover>) objectList.get(2)).get(0);
         Assert.assertEquals("0 2 N", rover1.getFinalPosition());
-        Rover rover2 = ((List<Rover>) objectList.get(1)).get(1);
+        Rover rover2 = ((List<Rover>) objectList.get(2)).get(1);
         Assert.assertEquals("1 2 N", rover2.getFinalPosition());
 
     }
