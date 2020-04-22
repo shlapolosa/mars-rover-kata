@@ -1,7 +1,7 @@
 com\tasks\thoughtworks\Compass.class
 com\tasks\thoughtworks\Plateau.class
-com\tasks\thoughtworks\MarsRoverApplication.class
 com\tasks\thoughtworks\Rover.class
+com\tasks\thoughtworks\Expedition.class
 com\tasks\thoughtworks\RoverPosition.class
-com\tasks\thoughtworks\Exploration.class
 com\tasks\thoughtworks\Compass$1.class
+com\tasks\thoughtworks\MarsMission.class

@@ -5,12 +5,12 @@ import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.*;
 
-public class Exploration {
+public class Expedition {
 
     private Stream<String> inputCommands;
     private List<Object> explorationElements = new ArrayList<Object>();
 
-    public Exploration(Stream<String> inputCommands) {
+    public Expedition(Stream<String> inputCommands) {
         this.inputCommands = inputCommands;
     }
 
